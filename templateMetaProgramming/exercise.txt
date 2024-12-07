@@ -1,0 +1,11 @@
+- learn to compare types of template parameters
+
+- template meta class 'Type' should receive a 'Needle' and 
+  several 'Haystack' (param pack) and generate ::located, the
+  index at which the Needle could be found in the rest of the 
+  args, else 0
+
+- We went for an approach with one template meta class, assuming
+  the hint with TypeIdx is a hint, not a requirement. The Type
+  class just calls its own specializations to assign the correct 
+  value to ::located in its enum.

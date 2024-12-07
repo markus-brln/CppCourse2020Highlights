@@ -1,0 +1,50 @@
+%class-name Parser
+%filenames parser
+%parsefun-source parse.cc
+%scanner ../scanner/scanner.h
+
+
+%right '$'              // sqrt unary, so right-associative
+%left  '-' '+' 
+%left  '*' '/'
+
+%token NUM              // provided by scanner
+
+%%
+// typical procedure of getting multiple lines of expressions
+input:
+lines
+|
+// empty
+;
+
+lines:
+lines line 
+| 
+line
+;
+
+line:
+'\n'
+|
+expression '\n'
+;
+
+// the possible expressions
+expression:
+    expression '+' expression
+|
+    expression '-' expression
+|
+    expression '*' expression
+|
+    expression '/' expression
+|
+    '(' expression ')'
+|
+    NUM
+|
+    '-' expression      // unary minus
+|
+    '$' expression      // own sqrt operator
+;

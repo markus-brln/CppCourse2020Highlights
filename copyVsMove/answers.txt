@@ -1,0 +1,21 @@
+Running the program with "time ./main 3000 1" yields the
+following output:
+
+SHELL=/bin/bash
+_=./main
+
+real    0m2,200s
+user    0m2,191s
+sys     0m0,008s
+
+We rerun with "time ./main 3000 0" and get:
+
+SHELL=/bin/bash
+_=./main
+
+real    0m1,502s
+user    0m1,501s
+sys     0m0,000s
+
+This shows that moving the std::string data is a lot 
+faster than copying.

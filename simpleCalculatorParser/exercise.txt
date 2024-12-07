@@ -1,0 +1,5 @@
+Purpose: define the grammar of a simple calculator
+
+2 * $ 4 + 2 * -6
+should evaluate to -8, so the '$' and '-' should 
+refer to the numbers right next to them (right association)

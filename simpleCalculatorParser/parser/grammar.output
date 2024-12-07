@@ -1,0 +1,267 @@
+[grammar (info)] Line 52: 
+Production Rules:
+   (precedences (shown between parentheses) were set by %prec;
+    are equal to the precedence of the rules' 1st terminal tokens;
+    or (if not shown) are equal to the default (max) precedence)
+1: input ->  lines
+2: input ->  <empty>
+3: lines ->  lines line
+4: lines ->  line
+5: line ('\x0a') ->  '\x0a'
+6: line ('\x0a') ->  expression '\x0a'
+7: expression ('+') ->  expression '+' expression
+8: expression ('-') ->  expression '-' expression
+9: expression ('*') ->  expression '*' expression
+10: expression ('/') ->  expression '/' expression
+11: expression ('(') ->  '(' expression ')'
+12: expression (NUM) ->  NUM
+13: expression ('-') ->  '-' expression
+14: expression ('$') ->  '$' expression
+15: input_$ ->  input
+
+
+Symbolic Terminal tokens:
+       error
+       EOF
+    36: '$'
+    45: '-'
+    43: '+'
+    42: '*'
+    47: '/'
+   257: NUM
+    10: '\x0a'
+    40: '('
+    41: ')'
+
+
+Grammar States: 
+
+State 0:
+15: input_$ ->  . input 
+  0:   On input to state 1
+  1:   On lines to state 2
+  2:   On line to state 3
+  3:   On '\x0a' to state 4
+  4:   On expression to state 5
+  5:   On '(' to state 6
+  6:   On NUM to state 7
+  7:   On '-' to state 8
+  8:   On '$' to state 9
+  Reduce by 2: input ->  . 
+
+
+State 1:
+15: input_$ -> input  . 
+
+
+State 2:
+1: input -> lines  . 
+3: lines -> lines  . line 
+  0:   On line to state 10
+  1:   On '\x0a' to state 4
+  2:   On expression to state 5
+  3:   On '(' to state 6
+  4:   On NUM to state 7
+  5:   On '-' to state 8
+  6:   On '$' to state 9
+  Reduce by 1: input -> lines  . 
+
+
+State 3:
+4: lines -> line  . 
+  Reduce by 4: lines -> line  . 
+
+
+State 4:
+5: line -> '\x0a'  . 
+  Reduce by 5: line -> '\x0a'  . 
+
+
+State 5:
+6: line -> expression  . '\x0a' 
+7: expression -> expression  . '+' expression 
+8: expression -> expression  . '-' expression 
+9: expression -> expression  . '*' expression 
+10: expression -> expression  . '/' expression 
+  0:   On '\x0a' to state 11
+  1:   On '+' to state 12
+  2:   On '-' to state 13
+  3:   On '*' to state 14
+  4:   On '/' to state 15
+
+
+State 6:
+11: expression -> '('  . expression ')' 
+  0:   On expression to state 16
+  1:   On '(' to state 6
+  2:   On NUM to state 7
+  3:   On '-' to state 8
+  4:   On '$' to state 9
+
+
+State 7:
+12: expression -> NUM  . 
+  Reduce by 12: expression -> NUM  . 
+
+
+State 8:
+13: expression -> '-'  . expression 
+  0:   On expression to state 17
+  1:   On '(' to state 6
+  2:   On NUM to state 7
+  3:   On '-' to state 8
+  4:   On '$' to state 9
+
+
+State 9:
+14: expression -> '$'  . expression 
+  0:   On expression to state 18
+  1:   On '(' to state 6
+  2:   On NUM to state 7
+  3:   On '-' to state 8
+  4:   On '$' to state 9
+
+
+State 10:
+3: lines -> lines line  . 
+  Reduce by 3: lines -> lines line  . 
+
+
+State 11:
+6: line -> expression '\x0a'  . 
+  Reduce by 6: line -> expression '\x0a'  . 
+
+
+State 12:
+7: expression -> expression '+'  . expression 
+  0:   On expression to state 19
+  1:   On '(' to state 6
+  2:   On NUM to state 7
+  3:   On '-' to state 8
+  4:   On '$' to state 9
+
+
+State 13:
+8: expression -> expression '-'  . expression 
+  0:   On expression to state 20
+  1:   On '(' to state 6
+  2:   On NUM to state 7
+  3:   On '-' to state 8
+  4:   On '$' to state 9
+
+
+State 14:
+9: expression -> expression '*'  . expression 
+  0:   On expression to state 21
+  1:   On '(' to state 6
+  2:   On NUM to state 7
+  3:   On '-' to state 8
+  4:   On '$' to state 9
+
+
+State 15:
+10: expression -> expression '/'  . expression 
+  0:   On expression to state 22
+  1:   On '(' to state 6
+  2:   On NUM to state 7
+  3:   On '-' to state 8
+  4:   On '$' to state 9
+
+
+State 16:
+11: expression -> '(' expression  . ')' 
+7: expression -> expression  . '+' expression 
+8: expression -> expression  . '-' expression 
+9: expression -> expression  . '*' expression 
+10: expression -> expression  . '/' expression 
+  0:   On ')' to state 23
+  1:   On '+' to state 12
+  2:   On '-' to state 13
+  3:   On '*' to state 14
+  4:   On '/' to state 15
+
+
+State 17:
+13: expression -> '-' expression  . 
+7: expression -> expression  . '+' expression 
+8: expression -> expression  . '-' expression 
+9: expression -> expression  . '*' expression 
+10: expression -> expression  . '/' expression 
+  0 (removed by precedence):   On '+' to state 12
+  1 (removed by precedence):   On '-' to state 13
+  2:   On '*' to state 14
+  3:   On '/' to state 15
+  Reduce by 13: expression -> '-' expression  . 
+
+
+State 18:
+14: expression -> '$' expression  . 
+7: expression -> expression  . '+' expression 
+8: expression -> expression  . '-' expression 
+9: expression -> expression  . '*' expression 
+10: expression -> expression  . '/' expression 
+  0:   On '+' to state 12
+  1:   On '-' to state 13
+  2:   On '*' to state 14
+  3:   On '/' to state 15
+  Reduce by 14: expression -> '$' expression  . 
+
+
+State 19:
+7: expression -> expression '+' expression  . 
+7: expression -> expression  . '+' expression 
+8: expression -> expression  . '-' expression 
+9: expression -> expression  . '*' expression 
+10: expression -> expression  . '/' expression 
+  0 (removed by precedence):   On '+' to state 12
+  1 (removed by precedence):   On '-' to state 13
+  2:   On '*' to state 14
+  3:   On '/' to state 15
+  Reduce by 7: expression -> expression '+' expression  . 
+
+
+State 20:
+8: expression -> expression '-' expression  . 
+7: expression -> expression  . '+' expression 
+8: expression -> expression  . '-' expression 
+9: expression -> expression  . '*' expression 
+10: expression -> expression  . '/' expression 
+  0 (removed by precedence):   On '+' to state 12
+  1 (removed by precedence):   On '-' to state 13
+  2:   On '*' to state 14
+  3:   On '/' to state 15
+  Reduce by 8: expression -> expression '-' expression  . 
+
+
+State 21:
+9: expression -> expression '*' expression  . 
+7: expression -> expression  . '+' expression 
+8: expression -> expression  . '-' expression 
+9: expression -> expression  . '*' expression 
+10: expression -> expression  . '/' expression 
+  0 (removed by precedence):   On '+' to state 12
+  1 (removed by precedence):   On '-' to state 13
+  2 (removed by precedence):   On '*' to state 14
+  3 (removed by precedence):   On '/' to state 15
+  Reduce by 9: expression -> expression '*' expression  . 
+
+
+State 22:
+10: expression -> expression '/' expression  . 
+7: expression -> expression  . '+' expression 
+8: expression -> expression  . '-' expression 
+9: expression -> expression  . '*' expression 
+10: expression -> expression  . '/' expression 
+  0 (removed by precedence):   On '+' to state 12
+  1 (removed by precedence):   On '-' to state 13
+  2 (removed by precedence):   On '*' to state 14
+  3 (removed by precedence):   On '/' to state 15
+  Reduce by 10: expression -> expression '/' expression  . 
+
+
+State 23:
+11: expression -> '(' expression ')'  . 
+  Reduce by 11: expression -> '(' expression ')'  . 
+
+
+

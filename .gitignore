@@ -1,5 +1,8 @@
 **/*.a
 **/*.o
+**/*.ih.gch
+**/main
 
 **/generated_deps/
 
+.idea

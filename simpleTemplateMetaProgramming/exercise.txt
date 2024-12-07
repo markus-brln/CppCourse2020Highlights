@@ -1,0 +1,3 @@
+- learn to design a small template meta program
+- display size_t constant as a binary value
+- should not use divisions and modulo computations

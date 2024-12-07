@@ -1,0 +1,8 @@
+- implement a simple class using policies (continuation of 25)
+
+- Insertable from previous exercise but members that are 
+  needed by main() implemented
+
+- constructors and operator<< in .f files
+
+- NOTE: .ih file ommitted since no members in separate .cc files
