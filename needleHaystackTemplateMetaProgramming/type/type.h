@@ -3,15 +3,15 @@ struct Type
 {
 };
 // just expects param pack, general declaration
-// (does not even have a 'located' enum value since 
+// (does not even have a 'located' enum value since
 // no type would be given at all)
 
 
 template <typename Needle>              // specialization 1
 struct Type<Needle>
 {
-    enum 
-    { 
+    enum
+    {
         located = 0                     // recursion ends
     };
 };
@@ -19,11 +19,11 @@ struct Type<Needle>
 // or in recursive instance (see enum in specialization 3)
 
                                         // specialization 2
-template <typename Needle, typename ...Haystack>     
+template <typename Needle, typename ...Haystack>
 struct Type<Needle, Needle, Haystack...>
 {
-    enum 
-    { 
+    enum
+    {
         located = 1                     // recursion ends
     };
 };
@@ -42,6 +42,6 @@ struct Type<Needle, Next, Haystack...>
     {                                   // recursion? add 1 to idx
         located = idx == 0 ? 0 : 1 + idx
     };
-    
+
 };
 // called if Needle != Next, but still types on the Haystack left

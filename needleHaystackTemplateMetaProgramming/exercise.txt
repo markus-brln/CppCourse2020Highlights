@@ -1,0 +1,9 @@
+- learn to compare types of template parameters (part 2)
+
+
+- same exercise as 20 but extra requirements:
+  - the support class TypeIdx must be a private, 
+    nested class (it may be a struct) of the class Type.
+  - the interface of the class Type may only contain the 
+    declaration of the support class TypeIdx.
+
